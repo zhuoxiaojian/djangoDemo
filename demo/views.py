@@ -193,10 +193,12 @@ def show_asset_in_table(request):
 
         if sort_column:   # 判断是否有排序需求
             sort_column = sort_column.replace('asset_', '')    
-            if sort_column in ['id','UserInfoname','password']:   # 如果排序的列表在这些内容里面
+            if sort_column in ['id','username','password']:   # 如果排序的列表在这些内容里面
                 if order == 'desc':   # 如果排序是反向
                     sort_column = '-%s' % (sort_column)
                 all_records = UserInfo.objects.all().order_by(sort_column)
+        else:
+            all_records = UserInfo.objects.all().order_by("id")
 
         all_records_count=all_records.count()
 

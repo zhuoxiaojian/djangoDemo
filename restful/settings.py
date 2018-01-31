@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/2.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.0/ref/settings/
 """
-
+from __future__ import absolute_import
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = ')!zm@^8cocr)n011ytc668n4s=8wri=%fwxr8(g+7+^5u-ysht'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = []
 
@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'xadmin',
     'crispy_forms',
     'reversion',
+    'djcelery',
 ]
 
 MIDDLEWARE = [
@@ -112,7 +113,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # https://docs.djangoproject.com/en/2.0/topics/i18n/
 
 LANGUAGE_CODE = 'zh-hans'
-
+# TIME_ZONE = 'Asia/Shanghai'
 TIME_ZONE = 'UTC'
 
 USE_I18N = True
@@ -120,6 +121,7 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
+
 
 
 # Static files (CSS, JavaScript, Images)
@@ -145,5 +147,32 @@ LOGGING = {
             'handlers': ['console'],
             'level': 'DEBUG' if DEBUG else 'INFO',
         },
+    },
+}
+import djcelery
+from celery.schedules import crontab
+djcelery.setup_loader()
+BROKER_URL= 'amqp://guest@localhost//'
+# BROKER_URL = 'amqp://root:123456@localhost:5672/demo'
+# CELERY_RESULT_BACKEND = 'amqp://guest@localhost//'
+# BROKER_URL = 'redis://:dahai123@192.168.5.60:6380/6'
+# BROKER_URL = 'redis://:密码@主机地址:端口号/数据库号'
+
+from datetime import timedelta
+# celery beat -A  restful  启动定时任务
+# celery -A restful worker -l info  启动worker进程
+
+CELERYBEAT_SCHEDULE = {
+    'add-every-3-seconds': {
+        'task': 'demo.tasks.test_celery',
+        # 'schedule': crontab(minute=u'40', hour=u'17',),
+        'schedule': timedelta(seconds=5),
+        'args': (16, 17)
+    },
+    'timing': {
+        'task': 'demo.tasks.test_multiply',
+        'schedule': crontab(minute=u'45', hour=u'17',),
+        # 'schedule': timedelta(seconds=3),
+        'args': (2, 3)
     },
 }

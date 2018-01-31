@@ -1,3 +1,4 @@
+
 <script type="text/javascript">
 	//获取相对的固定高度
 	function getHeight() {
@@ -17,7 +18,7 @@
 
 li {
 	list-style: none;
-	margin-top: 5px;
+	margin-top: 0px;
 	margin-bottom: 15px;
 	text-align: left;
 }
@@ -26,19 +27,79 @@ li {
 	color: #FCFCFC;
 }
 
-.fullMenu {
+/* .fullMenu {
 	margin-top: 60px;
-}
+} */
 </style>
+<script type="text/javascript">
+$(function(){
+	layout();
+});
+					function layout() {
+
+						$('.layui-side')
+								.find('a')
+								.each(
+										function() {
+
+											if ($(this).attr('href') == (window.location.pathname + window.location.search)) {
+
+												$(this)
+														.parent()
+														.parent()
+														.parent()
+														.addClass(
+																'layui-nav-itemed');
+												$(this).parent().attr('class',
+														'layui-this');
+												return false;
+
+											}
+
+										});
+
+						layui.use([ 'element', 'layer' ], function() {
+							var element = layui.element();
+							var layer = layui.layer;
+
+							//监听折叠
+							element.on('collapse(test)', function(data) {
+								layer.msg('展开状态：' + data.show);
+								console.log("展开了");
+							});
+						});
+
+					}
+				</script>
+
 <div class="menuDiv">
 	<div class="fullMenu">
-		<ul style="color: #FCFCFC; font-size: medium;">
+		<!-- <ul style="color: #FCFCFC; font-size: medium;">
 			<li><a href="/restful/success/" class="myA">用户信息管理</a></li>
 				<ol style="display: none;">
 				  <li>修改</li>
 				</ol>
 			<li><a href="#" class="myA">学生信息管理</a></li>
-		</ul>
+		</ul> -->
+
+		<div class="layui-side layui-bg-cyan" style="margin-top: 60px;">
+			<div class="layui-side-scroll">
+				
+				<ul class="layui-nav layui-nav-tree site-demo-nav">
+					<li class="layui-nav-item layui-nav-itemed"><a
+						class="javascript:;" href="javascript:;">信息管理<span
+							class="layui-nav-more"></span></a>
+						<dl class="layui-nav-child ">
+							<dd>
+								<a
+									href="/restful/success/">用户信息管理</a>
+							</dd>
+							
+						</dl></li>
+				</ul>
+				
+			</div>
+		</div>
 	</div>
 </div>
 

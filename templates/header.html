@@ -21,6 +21,6 @@
 </style>
 
 <div class="header">
- <div class="rightDiv"><span class="higthLine">hi,&nbsp;&nbsp;{{request.user}}</span>&nbsp;&nbsp;<span class="higthLine"><a href="{% url 'logout' %}">退出</a></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+ <div class="rightDiv"><span class="higthLine">hi,&nbsp;&nbsp;{{ request.session.uname }}</span>&nbsp;&nbsp;<span class="higthLine"><a href="{% url 'logout' %}" style="color: #fff;">退出</a></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
  <div class="leftDiv"><span class="higthLine">广东智能学生管理系统</span></div>
 </div>
