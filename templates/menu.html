@@ -1,0 +1,45 @@
+<script type="text/javascript">
+	//获取相对的固定高度
+	function getHeight() {
+		return $(window).height() - 50;
+	}
+</script>
+<style type="text/css">
+.menuDiv {
+	float: left;
+	width: 200px;
+	background-color: #363636;
+	height: 100%;
+	margin-left: 0px;
+	padding-left: 0px;
+	position: absolute;
+}
+
+li {
+	list-style: none;
+	margin-top: 5px;
+	margin-bottom: 15px;
+	text-align: left;
+}
+
+.myA {
+	color: #FCFCFC;
+}
+
+.fullMenu {
+	margin-top: 60px;
+}
+</style>
+<div class="menuDiv">
+	<div class="fullMenu">
+		<ul style="color: #FCFCFC; font-size: medium;">
+			<li><a href="/restful/success/" class="myA">用户信息管理</a></li>
+				<ol style="display: none;">
+				  <li>修改</li>
+				</ol>
+			<li><a href="#" class="myA">学生信息管理</a></li>
+		</ul>
+	</div>
+</div>
+
+
