@@ -88,9 +88,10 @@
                         location.href = '/restful/success/' //跳转到成功页面
                     } 
                     
-                    if (data.msg === 'fail_user') {
+                    if (data.msg === 'fail_UserInfo') {
                         $('#errorMsg').show().text('亲！用户名或密码错误！')
-
+                        console.log("fail")
+		
                     }
                 })
             });

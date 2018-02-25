@@ -20,7 +20,8 @@ platforms.C_FORCE_ROOT = True
 
 # Using a string here means the worker will not have to
 # pickle the object when using Windows.
-app.config_from_object('django.conf:settings')
+# app.config_from_object('django.conf:settings')
+app.config_from_object('restful.config')    #以config.py作为配置文件导入参数
 app.autodiscover_tasks(lambda: settings.INSTALLED_APPS)
 
 
