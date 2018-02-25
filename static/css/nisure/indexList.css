@@ -1,0 +1,60 @@
+@charset "utf-8";
+/* CSS Document */
+body{font-size:12px;font-family: "微软雅黑",Arial,Helvetica,sans-serif;line-height:22px;padding:0px;margin:0px;}
+div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,button,textarea,p,blockquote,th,td{margin:0px;padding:0px;}
+table{border-collapse:collapse;}
+a,img{border:0;}
+ol,ul{list-style:none}
+a{color:blue;text-decoration:none;}
+a:hover{color:#1e3564;text-decoration:underline;}
+.clearfix{clear:both;width:0px;height:0px;overflow:hidden;}
+/* 网站容器 */
+#container{margin:auto;width:980px;}
+
+/*导航条*/
+.navigation{font-size:18px }
+.menu{height:39px;line-height:39px;background:url(../images/nav_bg.png);background-color:#275090;border:1px solid #0e2c5e;}
+.nav li{float:left;background:url(../images/1.jpg) repeat-y right;padding-right:2px;position:relative;z-index:998;}
+.nav li a{float:left;width:106px;display:block;line-height:39px;text-align:center;font-family:'微软雅黑','黑体';font-weight:normal;font-size:14px;color:#fff;}
+.nav li a:focus{-moz-outline-style: none;}
+.nav li a:hover{text-decoration:none;color:#fff;background:#3e639e;}
+.nav li .current{text-decoration:none;color:#fff;background:url(../images/2.jpg)}
+.nav li .sub_nav{position:absolute;top:38px;left:-2px;background:#264e8e;display:none;z-index:999;border:1px solid #0e2c5e;border-top:none;}
+.nav li .sub_nav li{text-align:center;width:140px;height:35px;line-height:35px;position:relative;z-index:999;padding:0px;background:#264e8e;clear:left;}
+.nav li .sub_nav li a{height:34px;line-height:34px;width:140px;display:inline-block;}
+ 
+
+.right_g{ width:268px;overflow:hidden;border:1px solid #cdcdcd;}
+.left_g{ width:668px;overflow:hidden;border:1px solid #cdcdcd;margin:20px 0;}
+
+.ind_bt{font-size:14px;height:30px;line-height:30px;font-weight:normal;font-family:"微软雅黑";border-bottom:1px solid #DBDBDB;overflow:hidden;padding-left:10px;background:#ff8800;padding-right:10px;}
+.mtb_20{margin:10px 0;}
+.ml_10{margin-left:10px;_margin-left:6px;}
+.ind_bt a{font-size:12px;font-weight:normal;color:#888;font-family:"宋体"}
+
+
+.main{width:1000px;margin:10px auto;}
+.main_left{margin:10px auto;width:650px;overflow:hidden;float:left;}	
+.main_right{float:right;width:320px;overflow:hidden;}
+
+
+.lm ul li{ width:100px; float:left;}
+.news_list{margin-top:15px;border-bottom: 1px dashed #dbdbdb;padding-bottom:15px;}
+.news_list ul li{padding-left:20px;line-height:25px;height:25px;background:url(../images/xian.png) no-repeat 0 3px;font-size:14px;}
+.news_list ul li a{color:#464646}
+.news_list ul li a:hover{color:#666}
+.news_list ul li span{float:right;color:#666;font-size:12px}
+
+
+
+/* 网站底部 */
+
+#changpage{text-align: center;}
+
+#footer{
+    border-top: 1px solid #d0d0d0;
+    font-size: 12px;
+    height: auto;
+    width: 100%;}
+#footer p{text-align: center;line-height:50px;}
+   

@@ -1,0 +1,26 @@
+<style type="text/css">
+.header{ position:fixed; left:0; top:0; width:100%; height:50px; z-index:9999; background-color:#000;}
+.rightDiv{
+  float:right;
+  text-align: center;
+  margin-top: 10px;
+  margin-right: 10px;
+  color: #fff;
+}
+.leftDiv{
+ float: left;
+ text-align: center;
+ margin-top: 10px;
+ margin-left: 10px;
+ color: #fff;
+}
+.higthLine{
+ font-style: normal;
+ 
+}
+</style>
+
+<div class="header">
+ <div class="rightDiv"><span class="higthLine">hi,&nbsp;&nbsp;{{ request.session.uname }}</span>&nbsp;&nbsp;<span class="higthLine"><a href="{% url 'logout' %}" style="color: #fff;">退出</a></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+ <div class="leftDiv"><span class="higthLine">广东智能学生管理系统</span></div>
+</div>

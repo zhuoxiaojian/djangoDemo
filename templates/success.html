@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>用户信息管理</title>
+     <script src="../../static/libs/jquery.min.js"></script>
+     <script src="../../static/libs/bootstrap.min.js"></script>
+     <script src="../../static/libs/bootstrap-table.min.js"></script>
+     <script src="https://cdn.bootcss.com/bootstrap-table/1.11.1/locale/bootstrap-table-zh-CN.js"></script> 
+     <link type="text/css" rel="stylesheet" href="../../static/css/bootstrap.min.css"/>
+     <link type="text/css" rel="stylesheet" href="../../static/css/bootstrap-table.min.css"/>
+	<script src="../../static/layui/layui.js"></script>
+	<link type="text/css" rel="stylesheet"
+		href="../../static/layui/css/layui.css" />
+	<link type="text/css" rel="stylesheet"
+		href="../../static/layui/css/global.css" />
+<style type="text/css">
+/* body{
+	margin: 30px;
+	
+} */
+.container{
+ margin-left: 250px;
+ float: left;
+ margin-top: 70px;
+ text-align: center;
+ width: 80%;
+ position: absolute;
+ overflow: hidden;
+}
+
+
+</style>
+</head>
+<body>
+{% include 'header.html' %}
+{% include 'menu.html' %}
+<div class="container">
+	<!-- <center> -->
+<!-- 窗口 -->
+		<div id="modal" class="modal-user modal fade"
+			style="display: none">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"
+							aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+						<h4 class="modal-title"></h4>
+						<span class='alert_input'></span>
+					</div>
+					<div class="modal-body-industry modal-body">
+						{% csrf_token %}
+						<div class="form-group" hidden="true">
+							<label>Id：</label> <input id="asset_id" type="text"
+								class="form-control" name="asset_id" placeholder="ID"
+								readonly="readonly">
+						</div>
+						<div class="form-group">
+							<label>用户名：</label> <input id="asset_username" type="text"
+								class="form-control" name="asset_username" placeholder="用户名">
+						</div>
+						<div class="form-group">
+							<label>密码：</label> <input id="asset_password" type="text"
+								class="form-control" name="asset_password" placeholder="密码">
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default"
+							data-dismiss="modal">关闭</button>
+						<button type="button" class="btn btn-primary submit">提交</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+<!--  -->
+	<p class="toolbar" style="margin-bottom: 10px;">
+          <a class="btn btn-primary" onclick="add()" href="javascript:"
+				title="添加">添加</a>&nbsp;&nbsp;<a class="btn btn-primary" onclick="update()"
+				href="javascript:" title="编辑">编辑</a>&nbsp;&nbsp;<a
+				class="btn btn-primary" onclick="deleteInfo()" href="javascript:"
+				title="删除">删除</a>
+          <span class="alert"></span>
+       </p>
+        	
+<table id="asset_list_table" 
+				class="display table  table-hover" 
+				data-toggle="table"
+                data-url="{% url 'show_asset_in_table' %}"
+                data-method="get"
+                data-pagination="true"
+                data-side-pagination="server"
+                data-click-to-select="true"
+                data-page-list="[10, 20, 50, 100, 200]"
+                data-search="true" 
+                data-mobile-responsive="true" 
+                searchOnEnterKey="true"
+                data-show-refresh="true" 
+                data-show-columns="true"
+                data-show-toggle="true" 
+                data-page-size=20 
+                data-unique-id="asset_id"
+                data-striped="true"
+                data-toolbar=".toolbar"	
+                >
+              <thead >
+                    <tr>
+                    <!-- <th data-field="state" data-checkbox="true"></th> -->
+                    <th data-field="state" data-radio="true" ></th>
+                    <th data-field="asset_id" data-align="center" data-sortable="true" data-width="100">ID</th>
+                    <th data-field="asset_username" data-align="center" data-sortable="true"  data-width="400">用户名</th>
+                    <th data-field="asset_password" data-align="center" data-sortable="true"data-width="400">密码</th>
+                    </tr>
+              </thead>
+<!--   </center> -->
+</div>
+</body>
+<script type="text/javascript">
+$modal = $('#modal').modal({
+	show : false
+});
+$alert = $('.alert').hide();
+function showAlert(title, type) {
+	$alert.attr('class', 'alert alert-' + type || 'success').html(
+			'<i class="glyphicon glyphicon-check"></i> ' + title)
+			.show();
+	setTimeout(function() {
+		$alert.hide();
+	}, 3000);
+}
+
+function add(){
+	$modal.find('input[name]').each(function () {          	
+        $(this).val("");
+ 	 });
+	$modal.modal('show');
+}
+
+function update(){
+	var row = $("#asset_list_table").bootstrapTable('getSelections');
+	if(row.length > 0){
+		$modal.data('id', row[0].asset_id);
+		for ( var name in row[0]) {
+			$modal.find('input[name="' + name + '"]').val(row[0][name]);
+		}
+		$modal.modal('show');
+	}else{
+		alert("请选择一行");
+	}
+}
+
+$modal.find('.submit').click(function() {
+	//showAlert("添加成功","success");
+	var row = {};
+	var id = $("#asset_id").val();
+	var username = $("#asset_username").val();
+	var password = $("#asset_password").val();
+	if(username == "" || username == null){
+		alert("请输入用户名");
+		return false;
+	}
+	if(password == "" || password == null){
+		alert("请输入密码");
+		return false;
+	}
+	$modal.find('input[name]').each(function () {          	
+          row[$(this).attr('name')] = $(this).val();
+    });
+	$.ajax({
+		url:"{% url 'saveORupdate' %}",
+		type : 'get',
+		//contentType : 'application/json',
+		//dataType : 'json', //预期的服务器响应的数据类型。
+		data : {asset_id:id,asset_username:username,asset_password:password},
+		success : function(data) {
+			var result = JSON.parse(data);
+			$modal.modal('hide');
+			$("#asset_list_table").bootstrapTable('refresh');
+			showAlert(result.msg, 'success');
+		}
+	});
+});
+
+
+</script>
+<script type="text/javascript">
+function deleteInfo(){
+	var row = $("#asset_list_table").bootstrapTable('getSelections');
+	var deleteURL = "{% url 'deleteInfo' %}";
+	if(row.length > 0){
+		asset_id = row[0].asset_id;
+		$.get(deleteURL,
+			  {asset_id:asset_id},
+			  function(data){
+				  var result = JSON.parse(data);
+				  $("#asset_list_table").bootstrapTable('refresh');
+				  showAlert(result.msg, 'success');
+			  }
+		);
+	}else{
+		alert("请选择一行");
+	}
+}
+</script>
+</html>

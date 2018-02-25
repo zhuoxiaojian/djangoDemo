@@ -1,0 +1,12 @@
+.MYDiv {
+  position: fixed;
+  text-align:center;
+  top: 50%;
+  left: 50%;
+  background-color: #e1e5ee; 
+  width:100px;
+  height: 100px;
+  z-index:2021;
+ /*  border:1px solid #000; */
+-webkit-transform: translateX(-50%) translateY(-50%);
+}
