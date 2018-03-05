@@ -20,16 +20,21 @@ from datetime import timedelta
 # celery -B -A restful worker -l info 
 # python manage.py celery worker --loglevel=info --beat
 CELERYBEAT_SCHEDULE = {
+    'add-every-1-minute': {
+        'task': 'demo.tasks.test_multiply',
+        # 'schedule': crontab(minute=u'56', hour=u'11',),
+        'schedule': crontab(minute='*',hour='*'),
+        # 'schedule' : crontab(hour=14, minute=2, day_of_week=2),
+        # 'schedule': timedelta(seconds=50),
+        'args': (11,10)
+    },
     'add-every-3-seconds': {
         'task': 'demo.tasks.test_celery',
-        # 'schedule': crontab(minute=u'40', hour=u'17',),
-        'schedule': timedelta(seconds=5),
+        # 'schedule': crontab(minute=u'51', hour=u'11',),
+        'schedule': timedelta(seconds=30),
         'args': (16,3)
     },
-    'timing': {
-        'task': 'demo.tasks.test_multiply',
-        'schedule': crontab(minute=u'45', hour=u'17',),
-        # 'schedule': timedelta(seconds=3),
-        'args': (2,3)
-    },
+
 }
+
+# CELERYBEAT_SCHEDULER = 'djcelery.schedulers.DatabaseScheduler'
