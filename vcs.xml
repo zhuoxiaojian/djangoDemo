@@ -58,6 +58,10 @@
           <option name="url" value="https://github.com/zhuoxiaojian/yishengAnalyze.git" />
           <option name="userName" value="" />
         </UrlAndUserName>
+        <UrlAndUserName>
+          <option name="url" value="https://github.com/liangliangyy/DjangoBlog.git" />
+          <option name="userName" value="" />
+        </UrlAndUserName>
       </list>
     </option>
     <option name="cloneParentDir" value="E:\pycharmProject" />
