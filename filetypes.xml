@@ -2,6 +2,7 @@
   <component name="FileTypeManager" version="17">
     <extensionMap>
       <mapping pattern="README" type="Markdown" />
+      <mapping pattern="headers" type="PLAIN_TEXT" />
       <mapping pattern=".gitnore" type="PLAIN_TEXT" />
       <mapping pattern="log" type="PLAIN_TEXT" />
       <mapping pattern="city" type="PLAIN_TEXT" />
