@@ -2,14 +2,15 @@
   <component name="FileTypeManager" version="17">
     <extensionMap>
       <mapping pattern="README" type="Markdown" />
-      <mapping pattern="number" type="PLAIN_TEXT" />
-      <mapping pattern="headers" type="PLAIN_TEXT" />
-      <mapping pattern="companyFilter" type="PLAIN_TEXT" />
+      <mapping pattern="allCity" type="PLAIN_TEXT" />
       <mapping pattern=".gitnore" type="PLAIN_TEXT" />
-      <mapping pattern="log" type="PLAIN_TEXT" />
-      <mapping pattern="body" type="PLAIN_TEXT" />
       <mapping pattern="city" type="PLAIN_TEXT" />
+      <mapping pattern="headers" type="PLAIN_TEXT" />
       <mapping pattern="key" type="PLAIN_TEXT" />
+      <mapping pattern="log" type="PLAIN_TEXT" />
+      <mapping pattern="number" type="PLAIN_TEXT" />
+      <mapping pattern="companyFilter" type="PLAIN_TEXT" />
+      <mapping pattern="body" type="PLAIN_TEXT" />
       <mapping ext="2019-03-05" type="PLAIN_TEXT" />
       <mapping ext="sqlite3" type="PLAIN_TEXT" />
       <mapping pattern="getList" type="XML" />
