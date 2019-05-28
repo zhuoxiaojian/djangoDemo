@@ -5,6 +5,7 @@
       <mapping pattern="allCity" type="PLAIN_TEXT" />
       <mapping pattern=".gitnore" type="PLAIN_TEXT" />
       <mapping pattern="city" type="PLAIN_TEXT" />
+      <mapping pattern="keyword" type="PLAIN_TEXT" />
       <mapping pattern="headers" type="PLAIN_TEXT" />
       <mapping pattern="key" type="PLAIN_TEXT" />
       <mapping pattern="log" type="PLAIN_TEXT" />
